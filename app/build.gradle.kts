@@ -55,12 +55,16 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
 
-
+/*
+    implementation("com.google.dagger:hilt-android:2.56.2")
+    kapt("com.google.dagger:hilt-android-compiler:2.56.2")
+    implementation("androidx.hilt:hilt-navigation-fragment:1.1.0")
+ */
     implementation(libs.hilt.android.v2511)
     kapt(libs.hilt.compiler.v2511)
+    implementation(libs.androidx.hilt.navigation.fragment)
 
-    implementation(libs.androidx.hilt.lifecycle.viewmodel)
-    kapt(libs.androidx.hilt.compiler.v100)
+
 
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.extensions)

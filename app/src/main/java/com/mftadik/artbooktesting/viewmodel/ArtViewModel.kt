@@ -1,6 +1,5 @@
 package com.mftadik.artbooktesting.viewmodel
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,9 +8,12 @@ import com.mftadik.artbooktesting.model.ImageResponse
 import com.mftadik.artbooktesting.repository.ArtRepositoryInterface
 import com.mftadik.artbooktesting.roomdb.Art
 import com.mftadik.artbooktesting.util.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ArtViewModel @ViewModelInject constructor( private val repository : ArtRepositoryInterface) : ViewModel() {
+@HiltViewModel
+class ArtViewModel @Inject constructor( private val repository : ArtRepositoryInterface) : ViewModel() {
 
 
     //Art Fragment
@@ -76,20 +78,6 @@ class ArtViewModel @ViewModelInject constructor( private val repository : ArtRep
             images.value = response
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
