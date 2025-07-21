@@ -15,12 +15,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ArtViewModel @Inject constructor( private val repository : ArtRepositoryInterface) : ViewModel() {
 
-
-    //Art Fragment
-
     val artList = repository.getArt()
-
-    //Image API Fragment
 
     private val images = MutableLiveData<Resource<ImageResponse>>()
     val imageList : LiveData<Resource<ImageResponse>>
@@ -30,7 +25,9 @@ class ArtViewModel @Inject constructor( private val repository : ArtRepositoryIn
     val selectedImageUrl : LiveData<String>
         get() = selectedImage
 
-    //Art Details Fragment
+    fun resetInsertArtMsg() {
+        insertArtMsg = MutableLiveData<Resource<Art>>()
+    }
 
     private var insertArtMsg = MutableLiveData<Resource<Art>>()
     val insertArtMessage : LiveData<Resource<Art>>
@@ -42,10 +39,9 @@ class ArtViewModel @Inject constructor( private val repository : ArtRepositoryIn
 
     fun deleteArt(art : Art) = viewModelScope.launch {
         repository.deleteArt(art)
-
     }
 
-    fun insertArt(art : Art) = viewModelScope.launch {
+    private fun insertArt(art : Art) = viewModelScope.launch {
         repository.insertArt(art)
     }
 
@@ -54,7 +50,6 @@ class ArtViewModel @Inject constructor( private val repository : ArtRepositoryIn
             insertArtMsg.postValue(Resource.error("Enter name, artist, year",null))
             return
         }
-
         val yearInt = try {
             year.toInt()
         } catch (e : Exception) {
@@ -67,7 +62,6 @@ class ArtViewModel @Inject constructor( private val repository : ArtRepositoryIn
         setSelectedImage("")
         insertArtMsg.postValue(Resource.success(art))
     }
-
     fun searchImage(searchString : String) {
         if (searchString.isEmpty()) {
             return
@@ -78,6 +72,4 @@ class ArtViewModel @Inject constructor( private val repository : ArtRepositoryIn
             images.value = response
         }
     }
-
-
 }

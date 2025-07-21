@@ -1,6 +1,5 @@
 package com.mftadik.artbooktesting.adapter
 
-import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.RequestManager
 import com.mftadik.artbooktesting.R
-import com.mftadik.artbooktesting.roomdb.Art
 import javax.inject.Inject
 
 class ImageRecyclerAdapter @Inject constructor(val glide : RequestManager) : RecyclerView.Adapter<ImageRecyclerAdapter.ImageViewHolder>() {
@@ -23,12 +21,10 @@ class ImageRecyclerAdapter @Inject constructor(val glide : RequestManager) : Rec
         override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
             return oldItem == newItem
         }
-
         override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
             return oldItem == newItem
         }
     }
-
     private val recyclerListDiffer = AsyncListDiffer(this,diffUtil)
 
     var images : List<String>
@@ -54,7 +50,7 @@ class ImageRecyclerAdapter @Inject constructor(val glide : RequestManager) : Rec
         val url = images[position]
         holder.itemView.apply {
             glide.load(url).into(imageView)
-            setOnItemClickListener {
+            setOnClickListener {
                 onItemClickListener?.let {
                     it(url)
                 }

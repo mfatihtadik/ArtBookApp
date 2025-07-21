@@ -10,11 +10,11 @@ data class ImageResult(
     val imageHeight : Int,
     val imageSize : Int,
     val imageWidth : Int,
-    val largeImageUrl : String,
+    val largeImageURL : String,
     val likes : Int,
-    val pageUrl : String,
+    val pageURL : String,
     val previewHeight : Int,
-    val previewUrl : String,
+    val previewURL : String,
     val previewWidth : Int,
     val tags : String,
     val type : String,
@@ -24,6 +24,6 @@ data class ImageResult(
     val userImageURL : String,
     val views : Int,
     val webformatHeight : Int,
-    val webformatUrl : String,
+    val webformatURL : String,
     val webformatWidth : Int
 )
