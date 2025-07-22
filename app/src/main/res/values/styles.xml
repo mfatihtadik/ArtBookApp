@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="FragmentScenarioEmptyFragmentActivityTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- FragmentScenario kullanımı için gerekli bir tema -->
+    </style>
+</resources>
